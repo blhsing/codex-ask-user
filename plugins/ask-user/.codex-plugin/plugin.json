@@ -1,0 +1,21 @@
+{
+  "name": "ask-user",
+  "version": "0.1.0",
+  "description": "Give Codex a native, structured way to clarify requirements and request user decisions.",
+  "author": {
+    "name": "blhsing"
+  },
+  "interface": {
+    "displayName": "Ask User",
+    "shortDescription": "Let Codex ask before it assumes.",
+    "longDescription": "Adds a native clarification tool with single-choice, multi-choice, custom-answer, and discuss-first flows for Codex CLI and desktop.",
+    "developerName": "blhsing",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read"],
+    "defaultPrompt": [
+      "Interview me before you implement this.",
+      "Ask me to resolve meaningful ambiguities first."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

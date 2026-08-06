@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ask-user": {
+      "command": "node",
+      "args": ["${PLUGIN_ROOT}/dist/server.js"]
+    }
+  }
+}

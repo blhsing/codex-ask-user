@@ -1,0 +1,30 @@
+{
+  "name": "codex-ask-user",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An MCP tool that lets Codex ask the user structured clarification questions.",
+  "author": "blhsing <blhsing@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blhsing/codex-ask-user.git"
+  },
+  "homepage": "https://github.com/blhsing/codex-ask-user#readme",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "npm run build && node --test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.17.0",
+    "esbuild": "0.25.8",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
