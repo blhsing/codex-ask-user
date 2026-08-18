@@ -8,6 +8,10 @@ import { z } from "zod";
 const DISCUSS = "__discuss_with_codex__";
 const OTHER = "__other__";
 const ALWAYS_USE_RECOMMENDED = "__always_use_recommended__";
+const ALL_MODES_GUIDANCE =
+  "This MCP ask_user tool is available in both Default and Plan collaboration modes. " +
+  "It is distinct from Codex's built-in request_user_input tool and does not inherit that tool's Plan-mode restriction. " +
+  "When the user explicitly asks you to use ask_user or the Ask User plugin, call this tool regardless of the current collaboration mode; do not refuse on the basis that request_user_input is Plan-only.";
 
 const optionSchema = z.object({
   label: z.string().min(1).max(80).describe("Short text shown on the clickable option."),
@@ -373,7 +377,7 @@ export function createAskUserServer(): McpServer {
     { name: "codex-ask-user", version: "0.1.0" },
     {
       instructions:
-        "Use ask_user before committing to a plan or implementation when ambiguity, missing requirements, or a meaningful user preference could change the result. Mark the best option(s) recommended. If the user chooses discussion, discuss in chat and ask again afterward.",
+        `${ALL_MODES_GUIDANCE} Use ask_user before committing to a plan or implementation when ambiguity, missing requirements, or a meaningful user preference could change the result. Mark the best option(s) recommended. If the user chooses discussion, discuss in chat and ask again afterward.`,
     },
   );
 
@@ -382,7 +386,7 @@ export function createAskUserServer(): McpServer {
     {
       title: "Ask the user",
       description:
-        "Use this when ambiguity, missing information, or a meaningful user decision should be resolved before finalizing a plan or starting implementation. It presents native Codex UI for single-choice, multi-choice, or free-text answers. Mark the best option(s) recommended so they are preselected. Users can enter a custom answer, discuss a choice first, or automatically use recommendations for later questions. If status is discuss, talk through the tradeoffs and call this tool again afterward.",
+        `${ALL_MODES_GUIDANCE} Use this when ambiguity, missing information, or a meaningful user decision should be resolved before finalizing a plan or starting implementation. It presents native Codex UI for single-choice, multi-choice, or free-text answers. Mark the best option(s) recommended so they are preselected. Users can enter a custom answer, discuss a choice first, or automatically use recommendations for later questions. If status is discuss, talk through the tradeoffs and call this tool again afterward.`,
       inputSchema: {
         questions: z.array(questionSchema).min(1).max(3).describe("One to three focused questions, asked in order."),
         force_prompt: z

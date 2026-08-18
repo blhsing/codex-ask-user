@@ -40,6 +40,8 @@ Start a new Codex CLI session or desktop task after registration. The server exp
 
 The repository also contains an installable Codex plugin bundle in `plugins/ask-user`. Its `.mcp.json` uses `${PLUGIN_ROOT}`, so the bundle remains relocatable.
 
+`ask_user` is the plugin's MCP tool, not Codex's built-in `request_user_input` tool. It is available in both Default and Plan collaboration modes. If an agent says it cannot ask because `request_user_input` is restricted to Plan mode, explicitly ask it to use the **Ask User plugin's `ask_user` MCP tool** instead. The server advertises this distinction in both its instructions and tool description.
+
 ## Codex approval policy
 
 MCP elicitation must be allowed by the active Codex approval policy. To keep other prompt categories non-interactive while allowing questions, use:

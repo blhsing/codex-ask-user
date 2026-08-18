@@ -38,6 +38,10 @@ test("advertises the clarification tool and its safety hints", async () => {
     const { tools } = await client.listTools();
     const tool = tools.find(({ name }) => name === "ask_user");
     assert.ok(tool);
+    assert.match(client.getInstructions(), /available in both Default and Plan collaboration modes/i);
+    assert.match(client.getInstructions(), /distinct from Codex's built-in request_user_input tool/i);
+    assert.match(tool.description, /available in both Default and Plan collaboration modes/i);
+    assert.match(tool.description, /do not refuse on the basis that request_user_input is Plan-only/i);
     assert.equal(tool.annotations.readOnlyHint, true);
     assert.equal(tool.annotations.destructiveHint, false);
     assert.equal(tool.inputSchema.properties.questions.maxItems, 3);
